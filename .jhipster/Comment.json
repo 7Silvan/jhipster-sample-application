@@ -1,0 +1,40 @@
+{
+  "angularJSSuffix": "cosmos",
+  "applications": ["jhipster"],
+  "changelogDate": "20221209105746",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "comment",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "timedate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Comment",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cellModel",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "cellModel",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

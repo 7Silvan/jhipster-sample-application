@@ -1,0 +1,339 @@
+<div>
+  <h2 id="page-heading" data-cy="CellModelHeading">
+    <span jhiTranslate="jhipsterApp.cellModel.home.title">Cell Models</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterApp.cellModel.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cell-model-cosmos"
+        [routerLink]="['/cell-model-cosmos/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterApp.cellModel.home.createLabel"> Create a new Cell Model </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="cellModels?.length === 0">
+    <span jhiTranslate="jhipsterApp.cellModel.home.notFound">No Cell Models found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="cellModels && cellModels.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateAdded">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.dateAdded">Date Added</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateUpdated">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.dateUpdated">Date Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="species">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.species">Species</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetOrgan">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.targetOrgan">Target Organ</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="targetTissue">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.targetTissue">Target Tissue</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="vesselInfo">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.vesselInfo">Vessel Info</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matrix">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.matrix">Matrix</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="protocol">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.protocol">Protocol</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="manufacturer">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.manufacturer">Manufacturer</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matrixType">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.matrixType">Matrix Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="vesselType">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.vesselType">Vessel Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="inhouse">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.inhouse">Inhouse</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="characterizationData">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.characterizationData">Characterization Data</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ratingCharacterization">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.ratingCharacterization">Rating Characterization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ratingComplexity">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.ratingComplexity">Rating Complexity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ratingModelCost">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.ratingModelCost">Rating Model Cost</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ratingThroughPutCapacity">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.ratingThroughPutCapacity">Rating Through Put Capacity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ratingTurnAroundTime">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.ratingTurnAroundTime">Rating Turn Around Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="imageUrl">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.imageUrl">Image Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="department">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.department">Department</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modelState">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.modelState">Model State</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="applicationADME">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.applicationADME">Application ADME</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="applicationEfficacy">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.applicationEfficacy">Application Efficacy</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="applicationNone">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.applicationNone">Application None</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="applicationSafety">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.applicationSafety">Application Safety</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="animalAssayReplaced">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.animalAssayReplaced">Animal Assay Replaced</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comment">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="experts">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.experts">Experts</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="link">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.link">Link</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isRegulatorySubmission">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.isRegulatorySubmission">Is Regulatory Submission</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="publications">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.publications">Publications</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="limitationPercieved">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.limitationPercieved">Limitation Percieved</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.cellModel.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cellModel of cellModels; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cell-model-cosmos', cellModel.id, 'view']">{{ cellModel.id }}</a>
+          </td>
+          <td>{{ cellModel.name }}</td>
+          <td>{{ cellModel.dateAdded | formatMediumDatetime }}</td>
+          <td>{{ cellModel.dateUpdated | formatMediumDatetime }}</td>
+          <td>{{ cellModel.species }}</td>
+          <td>{{ cellModel.targetOrgan }}</td>
+          <td>{{ cellModel.targetTissue }}</td>
+          <td>{{ cellModel.vesselInfo }}</td>
+          <td>{{ cellModel.matrix }}</td>
+          <td>{{ cellModel.protocol }}</td>
+          <td>{{ cellModel.manufacturer }}</td>
+          <td>{{ cellModel.matrixType }}</td>
+          <td>{{ cellModel.vesselType }}</td>
+          <td>{{ cellModel.inhouse }}</td>
+          <td>{{ cellModel.characterizationData }}</td>
+          <td>{{ cellModel.ratingCharacterization }}</td>
+          <td>{{ cellModel.ratingComplexity }}</td>
+          <td>{{ cellModel.ratingModelCost }}</td>
+          <td>{{ cellModel.ratingThroughPutCapacity }}</td>
+          <td>{{ cellModel.ratingTurnAroundTime }}</td>
+          <td>{{ cellModel.imageUrl }}</td>
+          <td>{{ cellModel.department }}</td>
+          <td>{{ cellModel.modelState }}</td>
+          <td>{{ cellModel.applicationADME }}</td>
+          <td>{{ cellModel.applicationEfficacy }}</td>
+          <td>{{ cellModel.applicationNone }}</td>
+          <td>{{ cellModel.applicationSafety }}</td>
+          <td>{{ cellModel.animalAssayReplaced }}</td>
+          <td>{{ cellModel.comment }}</td>
+          <td>{{ cellModel.experts }}</td>
+          <td>{{ cellModel.link }}</td>
+          <td>{{ cellModel.isRegulatorySubmission }}</td>
+          <td>{{ cellModel.publications }}</td>
+          <td>{{ cellModel.limitationPercieved }}</td>
+          <td>
+            {{ cellModel.user?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cell-model-cosmos', cellModel.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cell-model-cosmos', cellModel.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(cellModel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="cellModels && cellModels.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

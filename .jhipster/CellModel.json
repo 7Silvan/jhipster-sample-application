@@ -1,0 +1,193 @@
+{
+  "angularJSSuffix": "cosmos",
+  "applications": ["jhipster"],
+  "changelogDate": "20230109202509",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cell_model",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateAdded",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateUpdated",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "species",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "targetOrgan",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "targetTissue",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vesselInfo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "matrix",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "protocol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "manufacturer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "matrixType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vesselType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inhouse",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ratingCharacterization",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ratingComplexity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ratingModelCost",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ratingThroughPutCapacity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ratingTurnAroundTime",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "department",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "modelState",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "applicationADME",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "applicationEfficacy",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "applicationNone",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "applicationSafety",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "animalAssayReplaced",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "experts",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "limitationPercieved",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CellModel",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "projectSupported",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "projectSupported",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "cellType",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "cellType",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "comment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "characterizationData",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "characterizationData",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "publication",
+      "otherEntityRelationshipName": "cellModel",
+      "relationshipName": "publication",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

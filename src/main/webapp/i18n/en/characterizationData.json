@@ -1,0 +1,26 @@
+{
+  "jhipsterApp": {
+    "characterizationData": {
+      "home": {
+        "title": "Characterization Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Characterization Data",
+        "createOrEditLabel": "Create or edit a Characterization Data",
+        "notFound": "No Characterization Data found"
+      },
+      "created": "A new Characterization Data is created with identifier {{ param }}",
+      "updated": "A Characterization Data is updated with identifier {{ param }}",
+      "deleted": "A Characterization Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Characterization Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Characterization Data"
+      },
+      "id": "ID",
+      "description": "Description",
+      "link": "Link",
+      "cellModel": "Cell Model"
+    }
+  }
+}

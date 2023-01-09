@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="characterizationData">
+      <h2 data-cy="characterizationDataDetailsHeading">
+        <span jhiTranslate="jhipsterApp.characterizationData.detail.title">Characterization Data</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ characterizationData.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.characterizationData.description">Description</span></dt>
+        <dd>
+          <span>{{ characterizationData.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.characterizationData.link">Link</span></dt>
+        <dd>
+          <span>{{ characterizationData.link }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.characterizationData.cellModel">Cell Model</span></dt>
+        <dd>
+          <div *ngIf="characterizationData.cellModel">
+            <a [routerLink]="['/cell-model-cosmos', characterizationData.cellModel.id, 'view']">{{ characterizationData.cellModel.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/characterization-data-cosmos', characterizationData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

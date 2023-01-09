@@ -1,0 +1,40 @@
+{
+  "angularJSSuffix": "cosmos",
+  "applications": ["jhipster"],
+  "changelogDate": "20230109202506",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cell_type",
+  "fields": [
+    {
+      "fieldName": "cellSourceInfo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cellArchitecture",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vendor",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "CellType",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cellModel",
+      "otherEntityRelationshipName": "cellType",
+      "relationshipName": "cellModel",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

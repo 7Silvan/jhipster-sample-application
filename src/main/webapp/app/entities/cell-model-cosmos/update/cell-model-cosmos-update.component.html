@@ -1,0 +1,596 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-cell-model-cosmos-heading"
+        data-cy="CellModelCreateUpdateHeading"
+        jhiTranslate="jhipsterApp.cellModel.home.createOrEditLabel"
+      >
+        Create or edit a Cell Model
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.id" for="field_id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="field_id"
+            data-cy="id"
+            formControlName="id"
+            [readonly]="editForm.get('id')!.value != null"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.dateAdded" for="field_dateAdded">Date Added</label>
+          <div class="d-flex">
+            <input
+              id="field_dateAdded"
+              data-cy="dateAdded"
+              type="datetime-local"
+              class="form-control"
+              name="dateAdded"
+              formControlName="dateAdded"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.dateUpdated" for="field_dateUpdated">Date Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_dateUpdated"
+              data-cy="dateUpdated"
+              type="datetime-local"
+              class="form-control"
+              name="dateUpdated"
+              formControlName="dateUpdated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.species" for="field_species">Species</label>
+          <input type="text" class="form-control" name="species" id="field_species" data-cy="species" formControlName="species" />
+          <div *ngIf="editForm.get('species')!.invalid && (editForm.get('species')!.dirty || editForm.get('species')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('species')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.targetOrgan" for="field_targetOrgan">Target Organ</label>
+          <input
+            type="text"
+            class="form-control"
+            name="targetOrgan"
+            id="field_targetOrgan"
+            data-cy="targetOrgan"
+            formControlName="targetOrgan"
+          />
+          <div *ngIf="editForm.get('targetOrgan')!.invalid && (editForm.get('targetOrgan')!.dirty || editForm.get('targetOrgan')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('targetOrgan')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.targetTissue" for="field_targetTissue">Target Tissue</label>
+          <input
+            type="text"
+            class="form-control"
+            name="targetTissue"
+            id="field_targetTissue"
+            data-cy="targetTissue"
+            formControlName="targetTissue"
+          />
+          <div
+            *ngIf="editForm.get('targetTissue')!.invalid && (editForm.get('targetTissue')!.dirty || editForm.get('targetTissue')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('targetTissue')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.vesselInfo" for="field_vesselInfo">Vessel Info</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vesselInfo"
+            id="field_vesselInfo"
+            data-cy="vesselInfo"
+            formControlName="vesselInfo"
+          />
+          <div *ngIf="editForm.get('vesselInfo')!.invalid && (editForm.get('vesselInfo')!.dirty || editForm.get('vesselInfo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vesselInfo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.matrix" for="field_matrix">Matrix</label>
+          <input type="checkbox" class="form-check" name="matrix" id="field_matrix" data-cy="matrix" formControlName="matrix" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.protocol" for="field_protocol">Protocol</label>
+          <input type="text" class="form-control" name="protocol" id="field_protocol" data-cy="protocol" formControlName="protocol" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.manufacturer" for="field_manufacturer">Manufacturer</label>
+          <input
+            type="text"
+            class="form-control"
+            name="manufacturer"
+            id="field_manufacturer"
+            data-cy="manufacturer"
+            formControlName="manufacturer"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.matrixType" for="field_matrixType">Matrix Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="matrixType"
+            id="field_matrixType"
+            data-cy="matrixType"
+            formControlName="matrixType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.vesselType" for="field_vesselType">Vessel Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vesselType"
+            id="field_vesselType"
+            data-cy="vesselType"
+            formControlName="vesselType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.inhouse" for="field_inhouse">Inhouse</label>
+          <input type="checkbox" class="form-check" name="inhouse" id="field_inhouse" data-cy="inhouse" formControlName="inhouse" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.ratingCharacterization" for="field_ratingCharacterization"
+            >Rating Characterization</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ratingCharacterization"
+            id="field_ratingCharacterization"
+            data-cy="ratingCharacterization"
+            formControlName="ratingCharacterization"
+          />
+          <div
+            *ngIf="
+              editForm.get('ratingCharacterization')!.invalid &&
+              (editForm.get('ratingCharacterization')!.dirty || editForm.get('ratingCharacterization')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ratingCharacterization')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ratingCharacterization')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.ratingComplexity" for="field_ratingComplexity"
+            >Rating Complexity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ratingComplexity"
+            id="field_ratingComplexity"
+            data-cy="ratingComplexity"
+            formControlName="ratingComplexity"
+          />
+          <div
+            *ngIf="
+              editForm.get('ratingComplexity')!.invalid &&
+              (editForm.get('ratingComplexity')!.dirty || editForm.get('ratingComplexity')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ratingComplexity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ratingComplexity')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.ratingModelCost" for="field_ratingModelCost"
+            >Rating Model Cost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ratingModelCost"
+            id="field_ratingModelCost"
+            data-cy="ratingModelCost"
+            formControlName="ratingModelCost"
+          />
+          <div
+            *ngIf="
+              editForm.get('ratingModelCost')!.invalid &&
+              (editForm.get('ratingModelCost')!.dirty || editForm.get('ratingModelCost')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ratingModelCost')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ratingModelCost')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.ratingThroughPutCapacity" for="field_ratingThroughPutCapacity"
+            >Rating Through Put Capacity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ratingThroughPutCapacity"
+            id="field_ratingThroughPutCapacity"
+            data-cy="ratingThroughPutCapacity"
+            formControlName="ratingThroughPutCapacity"
+          />
+          <div
+            *ngIf="
+              editForm.get('ratingThroughPutCapacity')!.invalid &&
+              (editForm.get('ratingThroughPutCapacity')!.dirty || editForm.get('ratingThroughPutCapacity')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ratingThroughPutCapacity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ratingThroughPutCapacity')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.ratingTurnAroundTime" for="field_ratingTurnAroundTime"
+            >Rating Turn Around Time</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ratingTurnAroundTime"
+            id="field_ratingTurnAroundTime"
+            data-cy="ratingTurnAroundTime"
+            formControlName="ratingTurnAroundTime"
+          />
+          <div
+            *ngIf="
+              editForm.get('ratingTurnAroundTime')!.invalid &&
+              (editForm.get('ratingTurnAroundTime')!.dirty || editForm.get('ratingTurnAroundTime')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ratingTurnAroundTime')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('ratingTurnAroundTime')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.imageUrl" for="field_imageUrl">Image Url</label>
+          <input type="text" class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.department" for="field_department">Department</label>
+          <input
+            type="text"
+            class="form-control"
+            name="department"
+            id="field_department"
+            data-cy="department"
+            formControlName="department"
+          />
+          <div *ngIf="editForm.get('department')!.invalid && (editForm.get('department')!.dirty || editForm.get('department')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('department')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.modelState" for="field_modelState">Model State</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modelState"
+            id="field_modelState"
+            data-cy="modelState"
+            formControlName="modelState"
+          />
+          <div *ngIf="editForm.get('modelState')!.invalid && (editForm.get('modelState')!.dirty || editForm.get('modelState')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modelState')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.applicationADME" for="field_applicationADME"
+            >Application ADME</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="applicationADME"
+            id="field_applicationADME"
+            data-cy="applicationADME"
+            formControlName="applicationADME"
+          />
+          <div
+            *ngIf="
+              editForm.get('applicationADME')!.invalid &&
+              (editForm.get('applicationADME')!.dirty || editForm.get('applicationADME')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('applicationADME')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.applicationEfficacy" for="field_applicationEfficacy"
+            >Application Efficacy</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="applicationEfficacy"
+            id="field_applicationEfficacy"
+            data-cy="applicationEfficacy"
+            formControlName="applicationEfficacy"
+          />
+          <div
+            *ngIf="
+              editForm.get('applicationEfficacy')!.invalid &&
+              (editForm.get('applicationEfficacy')!.dirty || editForm.get('applicationEfficacy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('applicationEfficacy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.applicationNone" for="field_applicationNone"
+            >Application None</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="applicationNone"
+            id="field_applicationNone"
+            data-cy="applicationNone"
+            formControlName="applicationNone"
+          />
+          <div
+            *ngIf="
+              editForm.get('applicationNone')!.invalid &&
+              (editForm.get('applicationNone')!.dirty || editForm.get('applicationNone')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('applicationNone')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.applicationSafety" for="field_applicationSafety"
+            >Application Safety</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="applicationSafety"
+            id="field_applicationSafety"
+            data-cy="applicationSafety"
+            formControlName="applicationSafety"
+          />
+          <div
+            *ngIf="
+              editForm.get('applicationSafety')!.invalid &&
+              (editForm.get('applicationSafety')!.dirty || editForm.get('applicationSafety')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('applicationSafety')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.animalAssayReplaced" for="field_animalAssayReplaced"
+            >Animal Assay Replaced</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="animalAssayReplaced"
+            id="field_animalAssayReplaced"
+            data-cy="animalAssayReplaced"
+            formControlName="animalAssayReplaced"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.experts" for="field_experts">Experts</label>
+          <input type="text" class="form-control" name="experts" id="field_experts" data-cy="experts" formControlName="experts" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.link" for="field_link">Link</label>
+          <input type="text" class="form-control" name="link" id="field_link" data-cy="link" formControlName="link" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.limitationPercieved" for="field_limitationPercieved"
+            >Limitation Percieved</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="limitationPercieved"
+            id="field_limitationPercieved"
+            data-cy="limitationPercieved"
+            formControlName="limitationPercieved"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellModel.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

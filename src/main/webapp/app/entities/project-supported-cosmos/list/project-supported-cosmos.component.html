@@ -1,0 +1,131 @@
+<div>
+  <h2 id="page-heading" data-cy="ProjectSupportedHeading">
+    <span jhiTranslate="jhipsterApp.projectSupported.home.title">Project Supporteds</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterApp.projectSupported.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-project-supported-cosmos"
+        [routerLink]="['/project-supported-cosmos/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterApp.projectSupported.home.createLabel"> Create a new Project Supported </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="projectSupporteds?.length === 0">
+    <span jhiTranslate="jhipsterApp.projectSupported.home.notFound">No Project Supporteds found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="projectSupporteds && projectSupporteds.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="decisionMaking">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.projectSupported.decisionMaking">Decision Making</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isRegulatory">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.projectSupported.isRegulatory">Is Regulatory</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="projectNameOrThemeNumber">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.projectSupported.projectNameOrThemeNumber">Project Name Or Theme Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cellModel.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterApp.projectSupported.cellModel">Cell Model</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projectSupported of projectSupporteds; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/project-supported-cosmos', projectSupported.id, 'view']">{{ projectSupported.id }}</a>
+          </td>
+          <td>{{ projectSupported.decisionMaking }}</td>
+          <td>{{ projectSupported.isRegulatory }}</td>
+          <td>{{ projectSupported.projectNameOrThemeNumber }}</td>
+          <td>
+            <div *ngIf="projectSupported.cellModel">
+              <a [routerLink]="['/cell-model-cosmos', projectSupported.cellModel.id, 'view']">{{ projectSupported.cellModel.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/project-supported-cosmos', projectSupported.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/project-supported-cosmos', projectSupported.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(projectSupported)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="projectSupporteds && projectSupporteds.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

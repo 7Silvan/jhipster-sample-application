@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cellModel">
+      <h2 data-cy="cellModelDetailsHeading"><span jhiTranslate="jhipsterApp.cellModel.detail.title">Cell Model</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterApp.cellModel.id">Id</span></dt>
+        <dd>
+          <span>{{ cellModel.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.name">Name</span></dt>
+        <dd>
+          <span>{{ cellModel.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.dateAdded">Date Added</span></dt>
+        <dd>
+          <span>{{ cellModel.dateAdded | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.dateUpdated">Date Updated</span></dt>
+        <dd>
+          <span>{{ cellModel.dateUpdated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.species">Species</span></dt>
+        <dd>
+          <span>{{ cellModel.species }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.targetOrgan">Target Organ</span></dt>
+        <dd>
+          <span>{{ cellModel.targetOrgan }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.targetTissue">Target Tissue</span></dt>
+        <dd>
+          <span>{{ cellModel.targetTissue }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.vesselInfo">Vessel Info</span></dt>
+        <dd>
+          <span>{{ cellModel.vesselInfo }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.matrix">Matrix</span></dt>
+        <dd>
+          <span>{{ cellModel.matrix }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.protocol">Protocol</span></dt>
+        <dd>
+          <span>{{ cellModel.protocol }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.manufacturer">Manufacturer</span></dt>
+        <dd>
+          <span>{{ cellModel.manufacturer }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.matrixType">Matrix Type</span></dt>
+        <dd>
+          <span>{{ cellModel.matrixType }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.vesselType">Vessel Type</span></dt>
+        <dd>
+          <span>{{ cellModel.vesselType }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.inhouse">Inhouse</span></dt>
+        <dd>
+          <span>{{ cellModel.inhouse }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.ratingCharacterization">Rating Characterization</span></dt>
+        <dd>
+          <span>{{ cellModel.ratingCharacterization }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.ratingComplexity">Rating Complexity</span></dt>
+        <dd>
+          <span>{{ cellModel.ratingComplexity }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.ratingModelCost">Rating Model Cost</span></dt>
+        <dd>
+          <span>{{ cellModel.ratingModelCost }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.ratingThroughPutCapacity">Rating Through Put Capacity</span></dt>
+        <dd>
+          <span>{{ cellModel.ratingThroughPutCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.ratingTurnAroundTime">Rating Turn Around Time</span></dt>
+        <dd>
+          <span>{{ cellModel.ratingTurnAroundTime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.imageUrl">Image Url</span></dt>
+        <dd>
+          <span>{{ cellModel.imageUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.department">Department</span></dt>
+        <dd>
+          <span>{{ cellModel.department }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.modelState">Model State</span></dt>
+        <dd>
+          <span>{{ cellModel.modelState }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.applicationADME">Application ADME</span></dt>
+        <dd>
+          <span>{{ cellModel.applicationADME }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.applicationEfficacy">Application Efficacy</span></dt>
+        <dd>
+          <span>{{ cellModel.applicationEfficacy }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.applicationNone">Application None</span></dt>
+        <dd>
+          <span>{{ cellModel.applicationNone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.applicationSafety">Application Safety</span></dt>
+        <dd>
+          <span>{{ cellModel.applicationSafety }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.animalAssayReplaced">Animal Assay Replaced</span></dt>
+        <dd>
+          <span>{{ cellModel.animalAssayReplaced }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.comment">Comment</span></dt>
+        <dd>
+          <span>{{ cellModel.comment }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.experts">Experts</span></dt>
+        <dd>
+          <span>{{ cellModel.experts }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.link">Link</span></dt>
+        <dd>
+          <span>{{ cellModel.link }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.limitationPercieved">Limitation Percieved</span></dt>
+        <dd>
+          <span>{{ cellModel.limitationPercieved }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cellModel.user">User</span></dt>
+        <dd>
+          <span>{{ cellModel.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cell-model-cosmos', cellModel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

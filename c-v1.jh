@@ -1,0 +1,108 @@
+// an ignored comment
+/** not an ignored comment */
+
+// how many sources one may have?
+entity CellType {
+    cellSourceInfo String required
+    cellArchitecture String required
+    vendor String required
+}
+
+entity ProjectSupported {
+    decisionMaking String required
+    isRegulatory Boolean required
+    projectNameOrThemeNumber String required
+}
+
+entity User {
+  avatar String required
+  allowContacting Boolean required
+  avatar String required
+  email String required
+  firstName String required
+  lastName String required
+  roles String required
+}
+
+entity Comment {
+  text String required
+  timedate ZonedDateTime required
+}
+
+entity CellModel {
+    id String
+    dateAdded ZonedDateTime
+    dateUpdated ZonedDateTime
+// cells description - step one
+	species String required
+	targetOrgan String required
+	targetTissue String required
+// platform UUID - step two
+	vesselInfo String required
+    protocol String
+    manufacturer String // if other
+    matrixType String // if matrix
+    vesselType String
+    inhouse Boolean
+// validationData UUID - step three
+    ratingCharacterization Integer required
+    ratingComplexity Integer required
+    ratingModelCost Integer required
+	ratingThroughPutCapacity Integer required
+    ratingTurnAroundTime Integer required
+    imageUrl String
+// modelApplied UUID - step four
+	department String required
+    modelState String required      
+    applicationADME Boolean required
+    applicationEfficacy Boolean required
+    applicationNone Boolean required
+    applicationSafety Boolean required
+  	animalAssayReplaced String
+    note String
+    experts String
+    link String
+    // regulatory - step five
+    limitationPerceived String 
+}
+
+entity Publication {
+	link String required
+}
+
+entity CharacterizationData {
+    description String required
+	link String required
+}
+
+relationship ManyToOne {
+	CellModel to User
+	ProjectSupported to CellModel
+    CellType to CellModel
+    Comment to CellModel
+    Comment to User
+    CharacterizationData to CellModel
+    Publication to CellModel
+}
+
+// Set pagination options
+// paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl 
+
+// Set an angular suffix
+angularSuffix * with cosmos
+
+filter CellModel
+
+application {
+  config {
+    prodDatabaseType postgresql,
+  }
+  entities *
+}

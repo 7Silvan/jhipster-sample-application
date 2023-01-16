@@ -1,0 +1,39 @@
+{
+  "angularJSSuffix": "cosmos",
+  "applications": ["jhipster"],
+  "changelogDate": "20230116064854",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "project_supported",
+  "fields": [
+    {
+      "fieldName": "decisionMaking",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isRegulatory",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "projectNameOrThemeNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProjectSupported",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cellModel",
+      "otherEntityRelationshipName": "projectSupported",
+      "relationshipName": "cellModel",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

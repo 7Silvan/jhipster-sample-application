@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-cell-type-cosmos-heading"
+        data-cy="CellTypeCreateUpdateHeading"
+        jhiTranslate="jhipsterApp.cellType.home.createOrEditLabel"
+      >
+        Create or edit a Cell Type
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellType.cellSourceInfo" for="field_cellSourceInfo">Cell Source Info</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cellSourceInfo"
+            id="field_cellSourceInfo"
+            data-cy="cellSourceInfo"
+            formControlName="cellSourceInfo"
+          />
+          <div
+            *ngIf="
+              editForm.get('cellSourceInfo')!.invalid && (editForm.get('cellSourceInfo')!.dirty || editForm.get('cellSourceInfo')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cellSourceInfo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellType.cellArchitecture" for="field_cellArchitecture"
+            >Cell Architecture</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="cellArchitecture"
+            id="field_cellArchitecture"
+            data-cy="cellArchitecture"
+            formControlName="cellArchitecture"
+          />
+          <div
+            *ngIf="
+              editForm.get('cellArchitecture')!.invalid &&
+              (editForm.get('cellArchitecture')!.dirty || editForm.get('cellArchitecture')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cellArchitecture')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellType.vendor" for="field_vendor">Vendor</label>
+          <input type="text" class="form-control" name="vendor" id="field_vendor" data-cy="vendor" formControlName="vendor" />
+          <div *ngIf="editForm.get('vendor')!.invalid && (editForm.get('vendor')!.dirty || editForm.get('vendor')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('vendor')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterApp.cellType.cellModel" for="field_cellModel">Cell Model</label>
+          <select
+            class="form-control"
+            id="field_cellModel"
+            data-cy="cellModel"
+            name="cellModel"
+            formControlName="cellModel"
+            [compareWith]="compareCellModelCosmos"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="cellModelOption" *ngFor="let cellModelOption of cellModelsSharedCollection">{{ cellModelOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

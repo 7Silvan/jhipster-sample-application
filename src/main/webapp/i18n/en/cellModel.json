@@ -1,0 +1,57 @@
+{
+  "jhipsterApp": {
+    "cellModel": {
+      "home": {
+        "title": "Cell Models",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cell Model",
+        "createOrEditLabel": "Create or edit a Cell Model",
+        "notFound": "No Cell Models found"
+      },
+      "created": "A new Cell Model is created with identifier {{ param }}",
+      "updated": "A Cell Model is updated with identifier {{ param }}",
+      "deleted": "A Cell Model is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cell Model {{ id }}?"
+      },
+      "detail": {
+        "title": "Cell Model"
+      },
+      "id": "Id",
+      "dateAdded": "Date Added",
+      "dateUpdated": "Date Updated",
+      "species": "Species",
+      "targetOrgan": "Target Organ",
+      "targetTissue": "Target Tissue",
+      "vesselInfo": "Vessel Info",
+      "protocol": "Protocol",
+      "manufacturer": "Manufacturer",
+      "matrixType": "Matrix Type",
+      "vesselType": "Vessel Type",
+      "inhouse": "Inhouse",
+      "ratingCharacterization": "Rating Characterization",
+      "ratingComplexity": "Rating Complexity",
+      "ratingModelCost": "Rating Model Cost",
+      "ratingThroughPutCapacity": "Rating Through Put Capacity",
+      "ratingTurnAroundTime": "Rating Turn Around Time",
+      "imageUrl": "Image Url",
+      "department": "Department",
+      "modelState": "Model State",
+      "applicationADME": "Application ADME",
+      "applicationEfficacy": "Application Efficacy",
+      "applicationNone": "Application None",
+      "applicationSafety": "Application Safety",
+      "animalAssayReplaced": "Animal Assay Replaced",
+      "note": "Note",
+      "experts": "Experts",
+      "link": "Link",
+      "limitationPerceived": "Limitation Perceived",
+      "user": "User",
+      "projectSupported": "Project Supported",
+      "cellType": "Cell Type",
+      "comment": "Comment",
+      "characterizationData": "Characterization Data",
+      "publication": "Publication"
+    }
+  }
+}
